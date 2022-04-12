@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.project.mappers.memberMapper">
+
+	<insert id="insertMember">
+		insert into member(id,pass,name,email,date,postcode,address,detail_address) values(#{id},#{pass},#{name},#{email},#{date},#{postcode},#{address},#{detail_address})
+	</insert>
+	
+	<select id="userCheck" resultType="com.project.domain.MemberDTO">
+		select * from member where id=#{id} and pass=#{pass}
+	</select>
+	
+	<select id="getMember" resultType="com.project.domain.MemberDTO">
+		select * from member where id=#{id}
+	</select>
+	
+	<update id="updateMember">
+		update member set name=#{name},email=#{email},postcode=#{postcode},address=#{address},detail_address=#{detail_address} where id=#{id}
+	</update>
+	
+	<select id="getMemberList" resultType="com.project.domain.MemberDTO">
+		select * from member
+	</select>
+	
+	<delete id="deleteMember">
+		delete from member where id=#{id}
+	</delete>
+	
+	<select id="getMemberEmail" resultType="com.project.domain.MemberDTO">
+		select * from member where email=#{email}
+	</select>
+</mapper>
